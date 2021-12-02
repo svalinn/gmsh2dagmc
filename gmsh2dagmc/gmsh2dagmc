@@ -1,7 +1,7 @@
 #!/usr/env/python3
 import sys
-from dagmc_gmsh import gmshTopology
-from dagmc import dagmcGeom
+from gmsh2dagmc import gmshTopology
+from gmsh2dagmc import dagmcGeom
 
 if len(sys.argv) < 2:
     print("Usage: " + sys.argv[0] + " file.msh")
