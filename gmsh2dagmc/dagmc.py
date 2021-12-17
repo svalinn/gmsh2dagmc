@@ -137,9 +137,18 @@ class dagmcGeom:
             self.mb.tag_set_data(self.tags['surf_sense'], surf_handle, senses)
 
     def assign_metadata(self):
-            for vol in self.pygmsh.sense_data[surf]:
-                volume_id = vol[1]
-                volume_handle = self.moab_gmsh_vols[volume_id]
+
+        # returns entities with 3 (dimenetions which are always volumes) and their ids
+        dims_and_volume_ids = gmsh.model.getEntities(3)
+
+        for dim_and_vol_id in dims_and_volume_ids:
+            volume_id = dim_and_vol_id[1]
+            print('get entities in volume ', volume_id' and assign to moab core')
+
+        # not sure if this is the way to go about the setting of meta data
+            # for vol in self.pygmsh.sense_data[surf]:
+            #     volume_id = vol[1]
+            #     volume_handle = self.moab_gmsh_vols[volume_id]
                 
     def export_h5m(self,filename):
         all_sets = self.mb.get_entities_by_handle(0)
@@ -148,7 +157,6 @@ class dagmcGeom:
         self.mb.write_file(filename)
         return filename
 
-    
 """    
         surface_id = 1
         volume_id = 1
