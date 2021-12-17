@@ -9,7 +9,7 @@ import openmc_dagmc_wrapper as odw
 from openmc_plasma_source import FusionRingSource
 
 
-h5m_filename = "example_model_merged_surfaces_from_brep.h5m"
+h5m_filename = "example_model_unmerged_surfaces_from_brep.h5m"
 
 
 # creates a geometry object from a DAGMC geometry.

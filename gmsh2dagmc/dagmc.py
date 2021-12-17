@@ -141,13 +141,13 @@ class dagmcGeom:
             self.mb.tag_set_data(self.tags['surf_sense'], surf_handle, senses)
 
     def assign_metadata(self):
-
+        import gmsh
         # returns entities with 3 (dimenetions which are always volumes) and their ids
         dims_and_volume_ids = gmsh.model.getEntities(3)
 
         for dim_and_vol_id in dims_and_volume_ids:
             volume_id = dim_and_vol_id[1]
-            print('get entities in volume ', volume_id' and assign to moab core')
+            print('get entities in volume ', volume_id, ' and assign to moab core')
 
         # not sure if this is the way to go about the setting of meta data
             # for vol in self.pygmsh.sense_data[surf]:
