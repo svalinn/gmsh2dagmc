@@ -116,7 +116,11 @@ class dagmcGeom:
     def make_topology(self):
         # loop over the surfaces
         for surf in self.pygmsh.sense_data.keys():
-            surface_id = surf[1]
+            # surface_id = surf[1]
+            # the line above crashed the code as it would return negative
+            # numbers that don't exist in the dictionary. abs() has been added
+            # which needs checking to see if it is valid
+            surface_id = abs(surf[1])
             surf_handle = self.moab_gmsh_surfs[surface_id]
             # for each volume
             for vol in self.pygmsh.sense_data[surf]:
