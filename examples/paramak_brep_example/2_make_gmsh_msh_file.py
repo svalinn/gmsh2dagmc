@@ -9,7 +9,7 @@ gmsh.model.add("my_model")
 # scaling can to be applied to get geometry from mm to cm
 # CAD is often in mm while neutronics codes typically use cm
 # gmsh.option.setNumber("Geometry.OCCScaling", 0.1)
-volumes = gmsh.model.occ.importShapes('example_model_unmerged_surfaces_from_brep.brep')
+volumes = gmsh.model.occ.importShapes('example_model_merged_surfaces_from_brep.brep')
 
 # this will mesh the geometry and show the result
 gmsh.model.occ.synchronize()
