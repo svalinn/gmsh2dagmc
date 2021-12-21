@@ -6,6 +6,8 @@ particle transport codes.
 # Installation
 
 ```
-pip install -e git+https://github.com/svalinn/gmsh2dagmc
+conda install -c conda-forge moab
+sudo apt install python3-gmsh
+pip install git+https://github.com/svalinn/gmsh2dagmc
 ```
 
