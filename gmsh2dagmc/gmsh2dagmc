@@ -1,0 +1,36 @@
+#!/usr/env/python3
+
+import argparse
+from pathlib import Path
+
+from gmsh2dagmc import dagmcGeom, gmshTopology
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        '-i', '--input',
+        type=Path, default=None,
+        help='Input msh filename',
+        required=True
+    )
+
+    parser.add_argument(
+        '-o', '--output',
+        type=Path, default='dagmc.h5m',
+        help='Output h5m filename'
+    )
+
+    args = parser.parse_args()
+
+    data = gmshTopology(args.input)
+    data.get_surface_data()
+    data.get_volume_data()
+    data.get_surface_topology()
+    data.get_vertex_data()
+
+    geom = dagmcGeom(data)
+    geom.transfer_geometry()
+    geom.export_h5m(args.output)
